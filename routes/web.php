@@ -19,9 +19,10 @@ Route::get('/', function () {
     $emails = \App\Models\Campaign::all();
     foreach ($emails as $key => $email) {
         Mail::to($email->email)->send(new \App\Mail\Campaign($email->email));
+        break;
         sleep(1000);
     }
-    return view('mails.campaign');
+    return view('welcome');
 })->name('send-mail');
 
 
